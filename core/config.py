@@ -8,8 +8,8 @@ class Config(BaseSettings):
     DEBUG: bool = True
     APP_HOST: str = "0.0.0.0"
     APP_PORT: int = 8000
-    WRITER_DB_URL: str = f"mysql+aiomysql://fastapi:fastapi@localhost:3306/fastapi"
-    READER_DB_URL: str = f"mysql+aiomysql://fastapi:fastapi@localhost:3306/fastapi"
+    WRITER_DB_URL: str = f"postgres://fastapi:fastapi@localhost:5432/fastapi"
+    READER_DB_URL: str = f"postgres://fastapi:fastapi@localhost:5432/fastapi"
     JWT_SECRET_KEY: str = "fastapi"
     JWT_ALGORITHM: str = "HS256"
     SENTRY_SDN: str = None
@@ -20,21 +20,21 @@ class Config(BaseSettings):
 
 
 class DevelopmentConfig(Config):
-    WRITER_DB_URL: str = f"mysql+aiomysql://root:fastapi@db:3306/fastapi"
-    READER_DB_URL: str = f"mysql+aiomysql://root:fastapi@db:3306/fastapi"
+    WRITER_DB_URL: str = f"postgresql+asyncpg://fastapi:fastapi@db:5432/fastapi"
+    READER_DB_URL: str = f"postgresql+asyncpg://fastapi:fastapi@db:5432/fastapi"
     REDIS_HOST: str = "redis"
     REDIS_PORT: int = 6379
 
 
 class LocalConfig(Config):
-    WRITER_DB_URL: str = f"mysql+aiomysql://fastapi:fastapi@localhost:3306/fastapi"
-    READER_DB_URL: str = f"mysql+aiomysql://fastapi:fastapi@localhost:3306/fastapi"
+    WRITER_DB_URL: str = f"postgresql+asyncpg://fastapi:fastapi@localhost:5432/fastapi"
+    READER_DB_URL: str = f"postgresql+asyncpg://fastapi:fastapi@localhost:5432/fastapi"
 
 
 class ProductionConfig(Config):
     DEBUG: str = False
-    WRITER_DB_URL: str = f"mysql+aiomysql://fastapi:fastapi@localhost:3306/prod"
-    READER_DB_URL: str = f"mysql+aiomysql://fastapi:fastapi@localhost:3306/prod"
+    WRITER_DB_URL: str = f"postgresql+asyncpg://fastapi:fastapi@localhost:5432/prod"
+    READER_DB_URL: str = f"postgresql+asyncpg://fastapi:fastapi@localhost:5432/prod"
 
 
 def get_config():

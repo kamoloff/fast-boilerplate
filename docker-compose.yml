@@ -17,19 +17,19 @@ services:
     volumes:
       - $PWD:/home
   db:
-    build:
-      context: .
-      dockerfile: docker/db/Dockerfile
+    image: postgres:14.1-alpine
     container_name: db
     hostname: db
     ports:
-      - '3306:3306'
+      - '5432:5432'
     networks:
       - backend
+    environment:
+      - POSTGRES_DB=fastapi
+      - POSTGRES_USER=fastapi
+      - POSTGRES_PASSWORD=fastapi
   redis:
-    build:
-      context: .
-      dockerfile: docker/redis/Dockerfile
+    image: redis
     container_name: redis
     hostname: redis
     ports:
