@@ -1,5 +1,5 @@
 # FastAPI Boilerplate
-
+(Forked from [fastapi-boilerplate](https://github.com/teamhide/fastapi-boilerplate) and replaced mysql usage with postgres)
 # Features
 - Async SQLAlchemy session
 - Custom user class
