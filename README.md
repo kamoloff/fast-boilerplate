@@ -24,7 +24,7 @@ from core.db import Transactional, session
 
 @Transactional()
 async def create_user(self):
-    session.add(User(email="padocon@naver.com"))
+    session.add(User(email="admin@sample.com"))
 ```
 
 Do not use explicit `commit()`. `Transactional` class automatically do.
